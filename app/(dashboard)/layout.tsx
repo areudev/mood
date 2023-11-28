@@ -6,8 +6,8 @@ export default function DashBoardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="items flex h-screen w-full justify-start">
-      <aside className="h-full w-52 flex-grow border-r">Mood</aside>
+    <div className="items flex h-screen w-full justify-center">
+      {/* <aside className="h-full w-52 flex-grow border-r">Mood</aside> */}
       <div className="w-full">
         <header className="border-b py-4">
           <div className="container flex items-center justify-between">
