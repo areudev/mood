@@ -1,10 +1,9 @@
-import {auth, currentUser} from '@clerk/nextjs'
+import {currentUser} from '@clerk/nextjs'
 import {prisma} from '@/lib/db'
 import {redirect} from 'next/navigation'
 
 const createNewUser = async () => {
 	const user = await currentUser()
-	// console.log(user)
 
 	if (!user) {
 		throw new Error('No user id')
