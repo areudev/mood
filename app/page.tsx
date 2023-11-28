@@ -1,7 +1,12 @@
 import {Button} from '@/components/ui/button'
 import Link from 'next/link'
+import {auth} from '@clerk/nextjs'
 
-export default function Home() {
+export default async function Home() {
+	const {userId} = auth()
+
+	const href = userId ? '/journal' : '/new-user'
+
 	return (
 		<main className="container flex min-h-screen w-full items-center ">
 			<div className="mx-auto flex w-[45rem] flex-col items-start gap-4">
@@ -13,7 +18,7 @@ export default function Home() {
 					you have to do is be honest with yourself and you will be able to see
 				</p>
 				<Button asChild>
-					<Link href="/journal">Get Started</Link>
+					<Link href={href}>Get Started</Link>
 				</Button>
 			</div>
 		</main>
