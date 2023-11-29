@@ -5,6 +5,7 @@ import {
 } from 'next/font/google'
 import {ClerkProvider} from '@clerk/nextjs'
 import {cn} from '@/lib/utils'
+import {Toaster} from '@/components/ui/toaster'
 
 export const fontSans = FontSans({
   subsets: ['latin'],
