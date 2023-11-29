@@ -15,7 +15,7 @@ export default function DashBoardLayout({
             <UserButton />
           </div>
         </header>
-        <main className="container py-2">{children}</main>
+        <main className="container py-6">{children}</main>
       </div>
     </div>
   )

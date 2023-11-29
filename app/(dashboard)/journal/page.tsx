@@ -23,13 +23,18 @@ export default async function JournalPage() {
   console.log('entries', entries)
 
   return (
-    <div>
-      <h2 className="font-serif text-2xl font-semibold ">Journal</h2>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4">
+    <div className="space-y-6">
+      <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
+        <h2 className="font-serif text-2xl font-semibold ">Journal</h2>
         <NewEntry />
+      </div>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4">
         {entries.map(entry => (
           <EntryCard key={entry.id} entry={entry} />
         ))}
+        {/* {[1, 2, 3, 4, 5, 6, 7, 8].map((entry, index) => (
+          <EntryCard key={index} entry={entry} />
+        ))} */}
       </div>
     </div>
   )
