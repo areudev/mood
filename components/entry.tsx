@@ -7,17 +7,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
-export default function EntryCard({
-  entry,
-}: {
-  entry: {
-    id: string
-    createdAt: Date
-    updatedAt: Date
-    userId: string
-    content: string
-  }
-}) {
+export default function EntryCard({entry}: {entry: Entry}) {
   // return (
   //   <div>
   //     <h1>Entry Card</h1>
@@ -28,7 +18,14 @@ export default function EntryCard({
     <Card>
       <CardHeader>
         <CardTitle>{entry.id}</CardTitle>
-        <CardDescription>Card Description</CardDescription>
+        <CardDescription>
+          {entry.createdAt.toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <p>Card Content</p>

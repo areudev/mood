@@ -8,8 +8,8 @@ import {useRouter} from 'next/navigation'
 export default function NewEntry() {
   const router = useRouter()
   const handleClick = async () => {
-    await createNewEntry()
-    router.push('/journal')
+    const entry = (await createNewEntry()) as Entry
+    router.push(`/journal/${entry.id}`)
   }
   return (
     <Button onClick={handleClick}>
