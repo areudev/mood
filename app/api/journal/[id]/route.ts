@@ -1,5 +1,7 @@
+import {analyzeEntry} from '@/lib/ai'
 import {getUserByClerkID} from '@/lib/auth'
 import {prisma} from '@/lib/db'
+import {revalidatePath} from 'next/cache'
 import {NextResponse} from 'next/server'
 
 export const PATCH = async (
@@ -24,9 +26,32 @@ export const PATCH = async (
     },
   })
 
-  return NextResponse.json({data: updatedEntry})
+  const {color, mood, negative, sentimentScore, subject, summary} =
+    await analyzeEntry(updates)
 
-  // return new Response(JSON.stringify(updatedEntry), {
-  //   headers: {'content-type': 'application/json'},
-  // })
+  await prisma.analysis.upsert({
+    where: {
+      entryId: updatedEntry.id,
+    },
+    update: {
+      color,
+      mood,
+      negative,
+      subject,
+      summary,
+    },
+    create: {
+      entry: {
+        connect: {
+          id: updatedEntry.id,
+        },
+      },
+      color,
+      mood,
+      negative,
+      subject,
+      summary,
+    },
+  })
+  return NextResponse.json({data: updatedEntry})
 }

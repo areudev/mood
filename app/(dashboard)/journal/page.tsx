@@ -17,7 +17,7 @@ const getEntries = async () => {
     },
   })
 
-  console.log(await analyzeEntry('Today  the weather was bad.'))
+  // console.log(await analyzeEntry('Today the weather was bad.'))
 
   return entries
 }
@@ -37,9 +37,6 @@ export default async function JournalPage() {
             <EntryCard entry={entry} />
           </Link>
         ))}
-        {/* {[1, 2, 3, 4, 5, 6, 7, 8].map((entry, index) => (
-          <EntryCard key={index} entry={entry} />
-        ))} */}
       </div>
     </div>
   )
