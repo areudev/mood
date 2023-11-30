@@ -1,5 +1,6 @@
 import EntryCard from '@/components/entry'
 import NewEntry from '@/components/new-entry'
+import {analyzeEntry} from '@/lib/ai'
 import {getUserByClerkID} from '@/lib/auth'
 import {prisma} from '@/lib/db'
 import Link from 'next/link'
@@ -16,12 +17,13 @@ const getEntries = async () => {
     },
   })
 
+  console.log(await analyzeEntry('Today  the weather was bad.'))
+
   return entries
 }
 
 export default async function JournalPage() {
   const entries = await getEntries()
-  console.log('entries', entries)
 
   return (
     <div className="space-y-6">
