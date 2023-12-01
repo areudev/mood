@@ -37,7 +37,6 @@ const parser = StructuredOutputParser.fromZodSchema(
 
 const getPrompt = async (content: string) => {
   const format_instructions = parser.getFormatInstructions()
-  console.log('format_instructions', format_instructions)
 
   const prompt = new PromptTemplate({
     template:
@@ -45,7 +44,6 @@ const getPrompt = async (content: string) => {
     inputVariables: ['entry'],
     partialVariables: {format_instructions},
   })
-  console.log('prompt', prompt)
 
   const input = await prompt.format({
     entry: content,
@@ -70,7 +68,10 @@ export const analyzeEntry = async (content: string) => {
   }
 }
 
-export const qa = async (question: string, entries: Entry[]) => {
+export const qa = async (
+  question: string,
+  entries: {content: string; id: string; createdAt: Date}[],
+) => {
   const docs = entries.map(entry => {
     return new Document({
       pageContent: entry.content,

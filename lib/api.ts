@@ -35,3 +35,20 @@ export const updateEntry = async (id: string, updates: string) => {
     return data.data
   }
 }
+
+export const askQuestion = async (question: string) => {
+  const res = await fetch(
+    new Request(createUrl('/api/question'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({question}),
+    }),
+  )
+
+  if (res.ok) {
+    const data = await res.json()
+    return data.data
+  }
+}
