@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 
-export default function EntryCard({entry}: {entry: Entry}) {
+export default function EntryCard({entry}: {entry: Omit<Entry, 'analysis'>}) {
   // return (
   //   <div>
   //     <h1>Entry Card</h1>
@@ -28,11 +28,8 @@ export default function EntryCard({entry}: {entry: Entry}) {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <p>Card Content</p>
+        <p>{entry.content}</p>
       </CardContent>
-      <CardFooter>
-        <p>Card Footer</p>
-      </CardFooter>
     </Card>
   )
 }

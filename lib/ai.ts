@@ -33,6 +33,7 @@ const parser = StructuredOutputParser.fromZodSchema(
 
 const getPrompt = async (content: string) => {
   const format_instructions = parser.getFormatInstructions()
+  console.log('format_instructions', format_instructions)
 
   const prompt = new PromptTemplate({
     template:
@@ -40,6 +41,7 @@ const getPrompt = async (content: string) => {
     inputVariables: ['entry'],
     partialVariables: {format_instructions},
   })
+  console.log('prompt', prompt)
 
   const input = await prompt.format({
     entry: content,

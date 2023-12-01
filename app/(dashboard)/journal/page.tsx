@@ -17,10 +17,10 @@ const getEntries = async () => {
     },
   })
 
-  // console.log(await analyzeEntry('Today the weather was bad.'))
-
   return entries
 }
+// export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function JournalPage() {
   const entries = await getEntries()

@@ -14,7 +14,6 @@ export const POST = async (request: Request) => {
   })
 
   const analysis = await analyzeEntry(entry.content)
-  console.log(analysis)
 
   await prisma.analysis.create({
     data: {
