@@ -29,7 +29,7 @@ export const PATCH = async (
   const {color, mood, negative, sentimentScore, subject, summary} =
     await analyzeEntry(updates)
 
-  await prisma.analysis.upsert({
+  const updatedAnalysis = await prisma.analysis.upsert({
     where: {
       entryId: updatedEntry.id,
     },
@@ -53,5 +53,5 @@ export const PATCH = async (
       summary,
     },
   })
-  return NextResponse.json({data: updatedEntry})
+  return NextResponse.json({data: {...updatedEntry, analysis: updatedAnalysis}})
 }
