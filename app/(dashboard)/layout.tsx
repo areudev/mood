@@ -17,11 +17,14 @@ export default function DashBoardLayout({
             <h1 className="font-serif text-3xl font-semibold">
               <Link href="/">Mood</Link>
             </h1>
-            <div className="flex items-center justify-center">
-              <Button asChild variant={'link'}>
+            <div className="flex items-center justify-center gap-2">
+              <Button asChild className="p-1 text-lg" variant={'link'}>
                 <Link href="/journal">Journal</Link>
               </Button>
-              <Button className="mr-2" asChild variant={'link'}>
+              <Button className="p-1 text-lg" asChild variant={'link'}>
+                <Link href="/history">History</Link>
+              </Button>
+              <Button className="mr-2 p-1 text-lg" asChild variant={'link'}>
                 <Link href="/ask">Ask</Link>
               </Button>
               <UserButton />
