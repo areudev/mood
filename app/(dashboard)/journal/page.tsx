@@ -20,17 +20,18 @@ const getEntries = async () => {
 
   return entries
 }
-// export const dynamic = 'force-dynamic'
+
 export const revalidate = 0
 
 export default async function JournalPage() {
+  // await new Promise(resolve => setTimeout(resolve, 3000))
   const entries = await getEntries()
 
   return (
     <div className="space-y-6">
       <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
         <h2 className="font-serif text-2xl font-semibold ">Journal</h2>
-        <Question />
+        {/* <Question /> */}
         <NewEntry />
       </div>
       <div className="grid grid-cols-1  gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

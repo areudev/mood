@@ -5,7 +5,6 @@ import {Textarea} from './ui/textarea'
 import {useAutosave} from 'react-autosave'
 import {updateEntry} from '@/lib/api'
 import {toast} from './ui/use-toast'
-import {Toaster} from './ui/toaster'
 
 export const Editor = ({entry}: {entry: Entry}) => {
   const [currentEntry, setCurrentEntry] = useState(entry)
@@ -68,7 +67,6 @@ export const Editor = ({entry}: {entry: Entry}) => {
           ))}
         </ul>
       </div>
-      <Toaster />
     </div>
   )
 }

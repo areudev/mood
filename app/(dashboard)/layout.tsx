@@ -1,4 +1,5 @@
 import {Button} from '@/components/ui/button'
+import {Toaster} from '@/components/ui/toaster'
 import {UserButton} from '@clerk/nextjs'
 import Link from 'next/link'
 
@@ -16,9 +17,12 @@ export default function DashBoardLayout({
             <h1 className="font-serif text-3xl font-semibold">
               <Link href="/">Mood</Link>
             </h1>
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center">
               <Button asChild variant={'link'}>
                 <Link href="/journal">Journal</Link>
+              </Button>
+              <Button className="mr-2" asChild variant={'link'}>
+                <Link href="/ask">Ask</Link>
               </Button>
               <UserButton />
             </div>
@@ -26,6 +30,7 @@ export default function DashBoardLayout({
         </header>
         <main className="container py-6">{children}</main>
       </div>
+      <Toaster />
     </div>
   )
 }
