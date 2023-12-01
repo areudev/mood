@@ -15,7 +15,7 @@ export default function EntryCard({entry}: {entry: Omit<Entry, 'analysis'>}) {
   //   </div>
   // )
   return (
-    <Card>
+    <Card className="">
       <CardHeader>
         <CardTitle>{entry.id}</CardTitle>
         <CardDescription>
