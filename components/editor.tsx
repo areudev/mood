@@ -6,6 +6,7 @@ import {useAutosave} from 'react-autosave'
 import {updateEntry} from '@/lib/api'
 import {toast} from './ui/use-toast'
 import {Analysis, JournalEntry} from '@prisma/client'
+import {cn} from '@/lib/utils'
 
 export const Editor = ({
   entry,
@@ -65,8 +66,10 @@ export const Editor = ({
           />
         </div>
       </div>
-      <div className="space-y-2">
-        <h2 className="font-serif text-3xl font-semibold">Analysis</h2>
+      <div className={cn('space-y-2', saving && 'animate-pulse')}>
+        <h2 className="font-serif text-2xl font-semibold">
+          {saving ? 'Thinking...' : 'Analysis'}
+        </h2>
         <div
           className="mt-2 h-4"
           style={{

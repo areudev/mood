@@ -50,7 +50,7 @@ export default function EntryCard({
   }
 
   return (
-    <Card className=" transition-shadow duration-200 ease-in-out hover:shadow-lg dark:hover:shadow-neutral-500/20">
+    <Card className="transition-shadow duration-200 ease-in-out hover:shadow-lg dark:hover:shadow-primary/20">
       <CardHeader>
         <CardTitle>{entry.analysis.subject}</CardTitle>
         <CardDescription>
