@@ -5,6 +5,7 @@ import {
 } from 'next/font/google'
 import {ClerkProvider} from '@clerk/nextjs'
 import {cn} from '@/lib/utils'
+import {ThemeProvider} from '@/components/theme-provider'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -23,12 +24,19 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <head />
         <body
           className={cn(
-            'dark min-h-screen bg-background font-sans antialiased',
+            'bg-background font-sans antialiased',
             fontSans.variable,
             fontSerif.variable,
           )}
         >
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

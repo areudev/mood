@@ -1,3 +1,5 @@
+import {HeaderSheet} from '@/components/header-sheet'
+import {ModeToggle} from '@/components/mode-toggle'
 import {Button} from '@/components/ui/button'
 import {Toaster} from '@/components/ui/toaster'
 import {UserButton} from '@clerk/nextjs'
@@ -10,23 +12,39 @@ export default function DashBoardLayout({
 }) {
   return (
     <div className="items flex h-screen w-full justify-center">
-      {/* <aside className="h-full w-52 flex-grow border-r">Mood</aside> */}
       <div className="w-full">
         <header className="border-b py-4">
-          <div className="container flex items-center justify-between">
-            <h1 className="font-serif text-3xl font-semibold">
-              <Link href="/">Mood</Link>
-            </h1>
+          <div className="container flex items-center justify-between ">
+            <div className="-mt-1 flex gap-3">
+              <HeaderSheet />
+              <h1 className="font-serif text-3xl font-semibold md:block">
+                <Link href="/">Mood</Link>
+              </h1>
+            </div>
+
             <div className="flex items-center justify-center gap-2">
-              <Button asChild className="p-1 text-lg" variant={'link'}>
+              <Button
+                asChild
+                className="hidden p-1 text-lg md:block"
+                variant={'link'}
+              >
                 <Link href="/journal">Journal</Link>
               </Button>
-              <Button className="p-1 text-lg" asChild variant={'link'}>
+              <Button
+                className="hidden p-1 text-lg md:block"
+                asChild
+                variant={'link'}
+              >
                 <Link href="/history">Chart</Link>
               </Button>
-              <Button className="mr-2 p-1 text-lg" asChild variant={'link'}>
+              <Button
+                className="hidden p-1 text-lg md:block"
+                asChild
+                variant={'link'}
+              >
                 <Link href="/ask">Ask</Link>
               </Button>
+              <ModeToggle />
               <UserButton />
             </div>
           </div>

@@ -29,7 +29,7 @@ const getData = async () => {
 
 export default async function History() {
   const {analyses, avg, total} = await getData()
-  console.log(analyses)
+
   return (
     <div className="container mx-auto flex min-h-[80vh] flex-col items-center justify-center gap-2">
       <div className="flex gap-2 text-lg">
