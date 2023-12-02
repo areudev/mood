@@ -1,11 +1,18 @@
 'use client'
 import {Analysis} from '@prisma/client'
-import {ResponsiveContainer, LineChart, Line, XAxis, Tooltip} from 'recharts'
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  XAxis,
+  Tooltip,
+  YAxis,
+} from 'recharts'
 
 const CustomTooltip = ({payload, label, active}: any) => {
   const dateLabel = new Date(label).toLocaleString('eu', {
-    weekday: 'long',
-    year: 'numeric',
+    weekday: 'short',
+    year: '2-digit',
     month: 'short',
     day: 'numeric',
     hour: 'numeric',
@@ -14,17 +21,19 @@ const CustomTooltip = ({payload, label, active}: any) => {
 
   if (active) {
     const analysis = payload[0].payload
-    return <div>yo</div>
-    // return (
-    //   <div className="custom-tooltip relative rounded-lg border border-black/10 bg-white/5 p-8 shadow-md backdrop-blur-md">
-    //     <div
-    //       className="absolute left-2 top-2 h-2 w-2 rounded-full"
-    //       style={{background: analysis.color}}
-    //     ></div>
-    //     <p className="label text-sm text-black/30">{dateLabel}</p>
-    //     <p className="intro text-xl uppercase">{analysis.mood}</p>
-    //   </div>
-    // )
+
+    return (
+      // <div className="custom-tooltip relative rounded-lg border border-black/10 bg-white/5 p-8 shadow-md backdrop-blur-md">
+      <div className="z-50 w-72 rounded-md border bg-popover p-4 text-popover-foreground shadow-md outline-none">
+        <div
+          className="absolute left-2 top-2 h-2 w-2 rounded-full"
+          style={{background: analysis.color}}
+        ></div>
+        <p className="text-sm ">{dateLabel}</p>
+        <p className="text-lg uppercase">{analysis.mood}</p>
+        <p className="text-sm">{analysis.summary}</p>
+      </div>
+    )
   }
 
   return null
@@ -34,17 +43,31 @@ const HistoryChart = ({data}: {data: Analysis[]}) => {
   if (!data) {
     return null
   }
+  const formattedData = data.map(item => {
+    return {
+      ...item,
+      updatedAt: new Date(item.updatedAt).toLocaleString('eu', {
+        // weekday: 'narrow',
+        // year: '2-digit',
+        month: 'short',
+        day: '2-digit',
+        // hour: 'numeric',
+        // minute: 'numeric',
+      }),
+    }
+  })
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <LineChart width={300} height={100} data={data}>
+    <ResponsiveContainer height={350} width="100%">
+      <LineChart data={formattedData}>
         <Line
           type="monotone"
           dataKey="sentimentScore"
           stroke="#8884d8"
-          strokeWidth={2}
-          activeDot={{r: 8}}
+          strokeWidth={3}
+          activeDot={{r: 9}}
         />
         <XAxis dataKey="updatedAt" />
+        <YAxis dataKey="sentimentScore" />
         <Tooltip content={<CustomTooltip />} />
       </LineChart>
     </ResponsiveContainer>
