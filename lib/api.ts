@@ -6,16 +6,15 @@ export const createNewEntry = async () => {
   const res = await fetch(
     new Request(createUrl('/api/journal'), {
       method: 'POST',
-      // headers: {
-      //   'Content-Type': 'application/json',
-      // },
-      // body: JSON.stringify({}),
+      body: JSON.stringify({content: 'new entry'}),
     }),
   )
 
   if (res.ok) {
     const data = await res.json()
     return data.data
+  } else {
+    throw new Error('Failed to create new entry')
   }
 }
 

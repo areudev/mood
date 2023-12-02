@@ -5,14 +5,20 @@ import {Textarea} from './ui/textarea'
 import {useAutosave} from 'react-autosave'
 import {updateEntry} from '@/lib/api'
 import {toast} from './ui/use-toast'
+import {Analysis, JournalEntry} from '@prisma/client'
 
-export const Editor = ({entry}: {entry: Entry}) => {
+export const Editor = ({
+  entry,
+}: {
+  entry: JournalEntry & {analysis: Analysis}
+}) => {
   const [currentEntry, setCurrentEntry] = useState(entry)
   const [value, setValue] = useState(entry.content)
   const [saving, setSaving] = useState(false)
   useAutosave({
     data: value,
     onSave: async update => {
+      if (value === entry.content) return
       setSaving(true)
       toast({
         title: 'Saving...',
@@ -27,12 +33,20 @@ export const Editor = ({entry}: {entry: Entry}) => {
     interval: 4000,
   })
 
-  const {color, mood, negative, subject, summary} = currentEntry.analysis
+  const {
+    color = '',
+    mood = '',
+    negative = false,
+    subject = '',
+    summary = '',
+    sentimentScore = 0,
+  } = currentEntry.analysis
   const analysisData = [
     {name: 'Summary', value: summary},
     {name: 'Subject', value: subject},
     {name: 'mood', value: mood},
     {name: 'Negative', value: negative ? 'true' : 'false'},
+    {name: 'Sentiment Score', value: sentimentScore},
   ]
   return (
     <div className="w-full">

@@ -5,7 +5,6 @@ import {Button} from './ui/button'
 import {PlusIcon} from '@radix-ui/react-icons'
 import {useRouter} from 'next/navigation'
 import {toast} from './ui/use-toast'
-import {Toaster} from './ui/toaster'
 
 export default function NewEntry() {
   const router = useRouter()

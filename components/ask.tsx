@@ -6,7 +6,13 @@ import {askQuestion} from '@/lib/api'
 import {Avatar, AvatarFallback, AvatarImage} from './ui/avatar'
 import {cn} from '@/lib/utils'
 
-export default function ChatInterface({image}: {image: string}) {
+export default function ChatInterface({
+  image,
+  initialLetter = 'A',
+}: {
+  image: string
+  initialLetter: string
+}) {
   const [value, setValue] = useState('')
   const [loading, setLoading] = useState(false)
   const [messages, setMessages] = useState<
@@ -69,7 +75,7 @@ export default function ChatInterface({image}: {image: string}) {
             {message.sender === 'bot' ? null : (
               <Avatar>
                 <AvatarImage src={image} alt="@shadcn" />
-                <AvatarFallback>U</AvatarFallback>
+                <AvatarFallback>{initialLetter}</AvatarFallback>
               </Avatar>
             )}
           </div>

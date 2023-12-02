@@ -6,8 +6,10 @@ export default async function AskPage() {
   if (!user) {
     throw new Error('No user id')
   }
-  const {imageUrl} = user
+  const {imageUrl, emailAddresses} = user
   console.log({imageUrl})
 
-  return <Ask image={imageUrl} />
+  return (
+    <Ask image={imageUrl} initialLetter={emailAddresses[0].emailAddress[0]} />
+  )
 }
