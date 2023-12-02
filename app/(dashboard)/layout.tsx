@@ -22,7 +22,7 @@ export default function DashBoardLayout({
                 <Link href="/journal">Journal</Link>
               </Button>
               <Button className="p-1 text-lg" asChild variant={'link'}>
-                <Link href="/history">History</Link>
+                <Link href="/history">Chart</Link>
               </Button>
               <Button className="mr-2 p-1 text-lg" asChild variant={'link'}>
                 <Link href="/ask">Ask</Link>

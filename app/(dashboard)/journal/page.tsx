@@ -2,7 +2,6 @@ import EntryCard from '@/components/entry'
 import NewEntry from '@/components/new-entry'
 import {getUserByClerkID} from '@/lib/auth'
 import {prisma} from '@/lib/db'
-import {Analysis, JournalEntry} from '@prisma/client'
 import Link from 'next/link'
 
 const getEntries = async () => {
@@ -23,7 +22,7 @@ const getEntries = async () => {
   return entries
 }
 
-export const revalidate = 0
+export const dynamic = 'force-dynamic'
 
 export default async function JournalPage() {
   // await new Promise(resolve => setTimeout(resolve, 3000))
