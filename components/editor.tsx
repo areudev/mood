@@ -24,6 +24,7 @@ export const Editor = ({entry}: {entry: Entry}) => {
       })
       setSaving(false)
     },
+    interval: 4000,
   })
 
   const {color, mood, negative, subject, summary} = currentEntry.analysis

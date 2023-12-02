@@ -39,6 +39,7 @@ export const PATCH = async (
       negative,
       subject,
       summary,
+      sentimentScore,
     },
     create: {
       entry: {
@@ -51,6 +52,7 @@ export const PATCH = async (
       negative,
       subject,
       summary,
+      sentimentScore,
     },
   })
   return NextResponse.json({data: {...updatedEntry, analysis: updatedAnalysis}})

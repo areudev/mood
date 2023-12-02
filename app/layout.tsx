@@ -1,6 +1,6 @@
 import './globals.css'
 import {
-  Work_Sans as FontSans,
+  Space_Grotesk as FontSans,
   Playfair_Display as FontSerif,
 } from 'next/font/google'
 import {ClerkProvider} from '@clerk/nextjs'
@@ -23,7 +23,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <head />
         <body
           className={cn(
-            'dark min-h-screen bg-background font-sans antialiased',
+            'min-h-screen bg-background font-sans antialiased',
             fontSans.variable,
             fontSerif.variable,
           )}
