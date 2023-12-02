@@ -49,7 +49,7 @@ export const Editor = ({
     {name: 'Sentiment Score', value: sentimentScore},
   ]
   return (
-    <div className="w-full">
+    <div className="w-full space-y-8">
       <div className="space-y-4">
         <div className="space-y-2">
           <h2 className="font-serif text-2xl font-semibold">
@@ -75,8 +75,10 @@ export const Editor = ({
         ></div>
         <ul className="flex flex-col">
           {analysisData.map(item => (
-            <li key={item.name} className="flex items-center gap-2 text-lg">
-              <span className="font-semibold">{item.name}:</span>
+            <li key={item.name} className="flex gap-2 text-lg">
+              <span className="font-semibold text-muted-foreground">
+                {item.name}:
+              </span>
               <span>{item.value}</span>
             </li>
           ))}

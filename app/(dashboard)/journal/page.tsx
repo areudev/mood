@@ -2,6 +2,7 @@ import EntryCard from '@/components/entry'
 import NewEntry from '@/components/new-entry'
 import {getUserByClerkID} from '@/lib/auth'
 import {prisma} from '@/lib/db'
+import {Analysis, JournalEntry} from '@prisma/client'
 import Link from 'next/link'
 
 const getEntries = async () => {
@@ -13,6 +14,9 @@ const getEntries = async () => {
     },
     orderBy: {
       createdAt: 'desc',
+    },
+    include: {
+      analysis: true,
     },
   })
 
